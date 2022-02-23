@@ -1,11 +1,13 @@
 import { buildFeature, FeatureType } from 'adminjs';
 
-const feature = (): FeatureType => {
+const theme = (): any => {
   return buildFeature({
     actions: {
-      someAction: {},
+      theme: {
+
+      },
     },
   });
 };
 
-export default feature;
+export default theme;
