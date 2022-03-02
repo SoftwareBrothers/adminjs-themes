@@ -1,16 +1,25 @@
 import AdminJSExpress from '@adminjs/express';
-import MongooseAdapter from '@adminjs/mongoose';
-import AdminJS from 'adminjs';
+import AdminJS, { AdminJSOptions } from 'adminjs';
 import { Express } from 'express';
+import path from 'path';
+import { themes } from './themes';
 
-import { createUserResource } from './resources/user/user.resource';
+const PALETE_PAGE = AdminJS.bundle(path.join(__dirname, './components/palete'));
+
+export const adminConfig: AdminJSOptions = {
+  branding: {
+    theme: themes[0]
+  },
+  brandings: themes.map(theme => ({ theme })),
+  pages: {
+    palette: {
+      component: PALETE_PAGE,
+    },
+  },
+};
 
 const setupAdmin = async (app: Express): Promise<void> => {
-  AdminJS.registerAdapter(MongooseAdapter);
-  const adminJs = new AdminJS({
-    resources: [createUserResource()],
-  });
-
+  const adminJs = new AdminJS(adminConfig);
   const router = await AdminJSExpress.buildRouter(adminJs);
   app.use(adminJs.options.rootPath, router);
 };

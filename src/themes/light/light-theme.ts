@@ -1,6 +1,7 @@
-import { BrandingOptions } from 'adminjs';
+import { AdminJSTheme } from 'adminjs';
 
-const LightTheme: Partial<BrandingOptions['theme']> = {
+const LightTheme: AdminJSTheme = {
+  details: { name: 'AdminJS Light theme' },
   colors: {
     primary100: '#4268F6',
     primary80: '#6483F8',
