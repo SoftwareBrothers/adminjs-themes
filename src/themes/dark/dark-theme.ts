@@ -9,7 +9,6 @@ const DarkThemeOptions: AdminJSTheme = {
     container: '#20273E',
     defaultText: '#FFFFFF',
     loginText: '#FFFFFF',
-    loginWelcomeText: '#FFFFFF',
     shadow: 'rgba(0, 0, 0, 0.3)',
     white: '#FAFAFA',
   },
@@ -27,16 +26,15 @@ const DarkThemeOptions: AdminJSTheme = {
 };
 
 const DarkTheme = new ThemeGenerator(DarkThemeOptions)
-  .generatePalete({ primary: '#32A887', grey: '#d3d3d3' })
+  .generatePalete({ primary: '#48589A', grey: '#d3d3d3' })
   .setColorMapping({
-    successLight: 'successDark',
-    infoLight: 'infoDark',
     errorLight: 'errorDark',
+    filterBg: 'container',
+    infoLight: 'infoDark',
     navOpen: 'primary',
+    successLight: 'successDark',
+    welcomeBg: 'container',
   })
   .toJSON();
 
-  console.log(DarkTheme);
-
-
-export default DarkTheme;
+  export default DarkTheme;

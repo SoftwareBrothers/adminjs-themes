@@ -13,7 +13,7 @@ const colorScale = (color: string, steps: number): string[] => {
 class ThemeGenerator {
   private _theme: AdminJSTheme = {};
   private _colorMapping: Record<string, string> = {
-    filterBg: 'container',
+    dropdownHover: 'container',
     filterInputBorder: 'border',
     hoverBg: 'primary80',
     inputBorder: 'border',

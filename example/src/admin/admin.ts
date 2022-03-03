@@ -7,12 +7,9 @@ import { themes } from './themes';
 const PALETE_PAGE = AdminJS.bundle(path.join(__dirname, './components/palete'));
 
 export const adminConfig: AdminJSOptions = {
-  branding: {
-    theme: themes[0]
-  },
   brandings: themes.map(theme => ({ theme })),
   pages: {
-    palette: {
+    Palette: {
       component: PALETE_PAGE,
     },
   },
