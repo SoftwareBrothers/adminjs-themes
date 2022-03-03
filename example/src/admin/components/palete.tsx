@@ -9,7 +9,7 @@ const Color: FC<{ text: string; color: string }> = ({ text, color }) => {
   try {
     textColor = chroma(color).get('lab.l') < 70 ? 'white' : 'black';
   } catch (error) {
-    console.error(error);
+    // console.error(error);
   }
   return (
     <Box
@@ -29,9 +29,11 @@ const Theme: FC<BrandingOptions> = ({ theme = {} }) => {
     <Box width={['100%']} paddingX="xl">
       <H3>{theme.details?.name || 'Theme'}</H3>
       {colors &&
-        Object.keys(colors).sort().map(key => (
-          <Color color={colors[key]} text={key} />
-        ))}
+        Object.keys(colors)
+          .sort()
+          .map((key, i) => (
+            <Color key={`color-${i}`} color={colors[key]} text={key} />
+          ))}
     </Box>
   );
 };
@@ -39,7 +41,8 @@ const Theme: FC<BrandingOptions> = ({ theme = {} }) => {
 const Palete: FC = () => {
   return (
     <Box paddingY="xl" flex justifyContent="space-between">
-      {themes && themes.map(theme => <Theme theme={theme} />)}
+      {themes &&
+        themes.map((theme, i) => <Theme key={`theme-${i}`} theme={theme} />)}
     </Box>
   );
 };

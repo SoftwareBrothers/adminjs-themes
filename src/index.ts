@@ -8,6 +8,5 @@ import ThemeGenerator from './theme-generator';
 
 export { default as DarkTheme } from './themes/dark/dark-theme';
 export { default as LightTheme } from './themes/light/light-theme';
-export { default as DefaultTheme } from './themes/default-theme';
 
 export default ThemeGenerator;
