@@ -24,7 +24,7 @@ const LightTheme = new ThemeGenerator(LightThemeOptions)
     welcomeText: 'white',
     welcomeBg: 'defaultText',
     navOpen: 'primary',
-    navOpenText: 'white'
+    navOpenText: 'white',
   })
   .toJSON();
 

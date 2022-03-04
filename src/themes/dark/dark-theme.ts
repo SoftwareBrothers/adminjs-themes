@@ -39,4 +39,4 @@ const DarkTheme = new ThemeGenerator(DarkThemeOptions)
   })
   .toJSON();
 
-  export default DarkTheme;
+export default DarkTheme;
