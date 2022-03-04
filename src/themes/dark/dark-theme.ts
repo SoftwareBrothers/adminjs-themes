@@ -11,8 +11,8 @@ const DarkThemeOptions: AdminJSTheme = {
     loginText: '#FFFFFF',
     shadow: 'rgba(0, 0, 0, 0.3)',
     white: '#FAFAFA',
-    progress: '#0d111c',
-    progressBG: '#192035',
+    placeholder: '#0d111c',
+    placeholderBg: '#192035',
   },
   borderRadius: {
     navOpen: '20px',

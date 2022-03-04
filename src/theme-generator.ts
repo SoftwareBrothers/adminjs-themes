@@ -26,7 +26,7 @@ class ThemeGenerator {
   };
 
   constructor(theme?: AdminJSTheme) {
-    if (theme) this._theme = theme;
+    if (theme) this._theme = { ...theme };
   }
 
   setColorMapping(colorMapping: Record<string, string>) {
@@ -42,7 +42,7 @@ class ThemeGenerator {
           colors[this._colorMapping[key]] ||
           defaultColors[this._colorMapping[key]];
       }
-      this._theme.colors = colors;
+      this._theme.colors = { ...this._theme.colors, ...colors };
     });
   };
 

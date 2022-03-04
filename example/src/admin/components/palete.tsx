@@ -1,4 +1,4 @@
-import { Box, H1, H3 } from '@adminjs/design-system';
+import { Box, H3 } from '@adminjs/design-system';
 import { BrandingOptions } from 'adminjs';
 import React, { FC } from 'react';
 import { themes as themes } from '../themes';

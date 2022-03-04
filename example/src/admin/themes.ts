@@ -1,4 +1,3 @@
-import DarkTheme from "../../../src/themes/dark/dark-theme";
-import LightTheme from "../../../src/themes/light/light-theme";
+import { DarkTheme, LightTheme } from '../../../src/themes';
 
-export const themes = [DarkTheme, LightTheme];
+export const themes = [LightTheme, DarkTheme];
