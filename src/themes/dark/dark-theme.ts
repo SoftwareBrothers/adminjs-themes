@@ -34,6 +34,7 @@ const DarkTheme = new ThemeGenerator(DarkThemeOptions)
     filterBg: 'container',
     infoLight: 'infoDark',
     navOpen: 'primary',
+    navOpenText: 'white',
     successLight: 'successDark',
     welcomeBg: 'container',
   })
