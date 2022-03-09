@@ -2541,7 +2541,7 @@ acorn@^7.1.1, acorn@^7.4.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
-adminjs@^5.7.3:
+adminjs@^5.7.0:
   version "5.7.3"
   resolved "https://registry.yarnpkg.com/adminjs/-/adminjs-5.7.3.tgz#e5a42f7efb2d1772d340ffb66f14cf19a829d6e7"
   integrity sha512-2fNfTDucKCK6FdLmNUbIrkidPA+9LUxX/XO1locoBS1UqlZNLArt+6XB0LqxtObbbENSAtSMJ7I10fg0rBxVYA==
