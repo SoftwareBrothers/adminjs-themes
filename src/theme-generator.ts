@@ -11,9 +11,22 @@ const generateColorScale = (color: string, steps: number): string[] => {
 };
 
 /**
- *  Theme generator
- *  @returns ThemeGenerator
- **/
+ * Theme generator for AdminJS
+ * @returns ThemeGenerator
+ * @example
+ * ```
+ * const theme = new ThemeGenerator({
+ * {
+ *   details: { name: 'AdminJS theme' },
+ *   colors: {
+ *     bg: '#FFFFFF'
+ *   }
+ * })
+ *
+ * // Then export to use as a theme in app as an AdminJSTheme
+ * theme.toJSON()
+ * ```
+ */
 class ThemeGenerator {
   private _theme: AdminJSTheme = {};
 
@@ -68,9 +81,10 @@ class ThemeGenerator {
 
   /**
    * Color mapping executed before JSON serialization
+   * @returns void
    * @ignore
    */
-  mapColors = () => {
+  mapColors = (): void => {
     keys(this._colorMapping).forEach(key => {
       const colors = this._theme.colors;
       if (colors && !colors[key]) {
