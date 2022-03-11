@@ -10,7 +10,7 @@
     "release": "semantic-release",
     "build": "tsc",
     "dev": "tsc --watch",
-    "dev:example": "cd example && yarn dev",
+    "dev:example": "yarn --cwd \"example\" dev",
     "test": "jest",
     "lint": "eslint './src/**/*'",
     "check:all": "yarn lint && yarn build && yarn test"
