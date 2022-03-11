@@ -19,7 +19,7 @@ const LightThemeOptions: AdminJSTheme = {
 };
 
 const LightTheme = new ThemeGenerator(LightThemeOptions)
-  .generatePalete({ primary: '#3E7AEF' })
+  .generatePalette({ primary: '#3E7AEF' })
   .setColorMapping({
     welcomeText: 'white',
     welcomeBg: 'defaultText',

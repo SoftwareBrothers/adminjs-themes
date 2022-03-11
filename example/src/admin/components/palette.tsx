@@ -1,7 +1,7 @@
 import { Box, H3 } from '@adminjs/design-system';
 import { BrandingOptions } from 'adminjs';
 import React, { FC } from 'react';
-import { themes as themes } from '../themes';
+import { themes } from '../themes';
 import chroma from 'chroma-js';
 
 const Color: FC<{ text: string; color: string }> = ({ text, color }) => {
@@ -38,7 +38,7 @@ const Theme: FC<BrandingOptions> = ({ theme = {} }) => {
   );
 };
 
-const Palete: FC = () => {
+const Palette: FC = () => {
   return (
     <Box paddingY="xl" flex justifyContent="space-between">
       {themes &&
@@ -47,4 +47,4 @@ const Palete: FC = () => {
   );
 };
 
-export default Palete;
+export default Palette;

@@ -10,9 +10,12 @@
   "dependencies": {
     "@adminjs/design-system": "^2.1.0",
     "@adminjs/express": "^4.0.1",
+    "@adminjs/mongoose": "^2.0.2",
+    "@types/mongoose": "^5.11.97",
     "adminjs": "^5.6.0",
     "express": "^4.17.1",
     "express-formidable": "^1.2.0",
+    "mongoose": "^6.2.5",
     "nodemon": "^2.0.6",
     "ts-node": "^9.0.0"
   },

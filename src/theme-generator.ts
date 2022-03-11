@@ -4,7 +4,7 @@ import chroma from 'chroma-js';
 import keys from 'lodash/keys';
 import merge from 'lodash/merge';
 
-type PaleteColors = Partial<Record<'primary' | 'grey', string>>;
+type PaletteColors = Partial<Record<'primary' | 'grey', string>>;
 
 const generateColorScale = (color: string, steps: number): string[] => {
   return chroma.scale([chroma(color).brighten(2), chroma(color)]).colors(steps);
@@ -97,22 +97,22 @@ class ThemeGenerator {
   };
 
   /**
-   * @param  {PaleteColors} colors
+   * @param  {PaletteColors} colors
    * @returns ThemeGenerator
    */
-  generatePalete = (colors: PaleteColors = {}): ThemeGenerator => {
-    const palete = keys(colors).reduce((acc, key) => {
-      const colorsPalete = generateColorScale(colors[key], 5).reduce(
+  generatePalette = (colors: PaletteColors = {}): ThemeGenerator => {
+    const palette = keys(colors).reduce((acc, key) => {
+      const colorsPalette = generateColorScale(colors[key], 5).reduce(
         (acc, curr, index) => {
           acc[`${key}${++index * 20}`] = curr;
           return acc;
         },
         { [key]: colors[key] }
       );
-      return { ...acc, ...colorsPalete };
+      return { ...acc, ...colorsPalette };
     }, {});
 
-    this._theme.colors = merge(this._theme?.colors, palete);
+    this._theme.colors = merge(this._theme?.colors, palette);
     return this;
   };
 

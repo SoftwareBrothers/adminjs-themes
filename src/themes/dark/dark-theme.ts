@@ -28,7 +28,7 @@ const DarkThemeOptions: AdminJSTheme = {
 };
 
 const DarkTheme = new ThemeGenerator(DarkThemeOptions)
-  .generatePalete({ primary: '#48589A', grey: '#d3d3d3' })
+  .generatePalette({ primary: '#48589A', grey: '#d3d3d3' })
   .setColorMapping({
     errorLight: 'errorDark',
     filterBg: 'container',

@@ -4,13 +4,13 @@ import { Express } from 'express';
 import path from 'path';
 import { themes } from './themes';
 
-const PALETE_PAGE = AdminJS.bundle(path.join(__dirname, './components/palete'));
+const PALETTE_PAGE = AdminJS.bundle(path.join(__dirname, './components/palette'));
 
 export const adminConfig: AdminJSOptions = {
   brandings: themes.map(theme => ({ theme })),
   pages: {
     Palette: {
-      component: PALETE_PAGE,
+      component: PALETTE_PAGE,
     },
   },
 };
