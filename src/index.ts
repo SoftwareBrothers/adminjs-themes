@@ -1,9 +1,11 @@
 /**
- * @module @adminjs/example-feature
+ * @module @adminjs/themes
  * @subcategory Features
  * @section modules
  */
 
-import feature from './feature';
+import ThemeGenerator from './theme-generator';
 
-export default feature;
+export * from './themes';
+
+export default ThemeGenerator;

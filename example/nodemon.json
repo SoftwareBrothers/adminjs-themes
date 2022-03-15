@@ -6,5 +6,5 @@
     "src",
     "../src"
   ],
-  "ext": "ts"
+  "ext": "ts,js"
 }

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "outDir": "./built",
     "target": "ES2016",
     "module": "CommonJS",
