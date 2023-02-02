@@ -1,7 +1,4 @@
-import { AdminJSTheme } from 'adminjs';
-import ThemeGenerator from '../../theme-generator';
-
-const DarkThemeOptions: AdminJSTheme = {
+const theme = {
   details: { name: 'AdminJS Dark theme' },
   colors: {
     bg: '#192035',
@@ -27,17 +24,4 @@ const DarkThemeOptions: AdminJSTheme = {
   },
 };
 
-const DarkTheme = new ThemeGenerator(DarkThemeOptions)
-  .generatePalette({ primary: '#48589A', grey: '#d3d3d3' })
-  .setColorMapping({
-    errorLight: 'errorDark',
-    filterBg: 'container',
-    infoLight: 'infoDark',
-    navOpen: 'primary',
-    navOpenText: 'white',
-    successLight: 'successDark',
-    welcomeBg: 'container',
-  })
-  .toJSON();
-
-export default DarkTheme;
+export default theme;
