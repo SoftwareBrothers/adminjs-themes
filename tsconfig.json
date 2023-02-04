@@ -13,10 +13,10 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "baseUrl": "./",
-    "outDir": "lib",
-    "declarationDir": "types",
+    "outDir": "dist",
+    "declarationDir": null,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true
   },
-  "exclude": ["test", "lib", "types", "example"]
+  "exclude": ["test", "lib", "dist", "node_modules"]
 }
