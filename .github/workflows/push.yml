@@ -56,9 +56,9 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn build
-      # - name: Release
-      #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     SLACK_WEBHOOK: ${{ secrets.ADMIN_SLACK_WEBHOOK }}
-      #   run: yarn release
+      - name: Release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK: ${{ secrets.ADMIN_SLACK_WEBHOOK }}
+        run: yarn release

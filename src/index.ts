@@ -1,11 +1,20 @@
-/**
- * @module @adminjs/themes
- * @subcategory Features
- * @section modules
- */
+#!/usr/bin/env node
+import { program } from 'commander';
+import { bundle } from './bundle';
 
-import ThemeGenerator from './theme-generator';
+program.name('themes').description('AdminJS Themes CLI');
 
-export * from './themes';
+program
+  .command('bundle')
+  .argument('<path>', 'Path to directory containing themes')
+  .option('-o, --output <directory>', 'Output directory', './lib')
+  .action(async (path, options) => {
+    try {
+      await bundle(path, options.output);
+    } catch (e) {
+      console.error(e);
+      process.exit(1);
+    }
+  });
 
-export default ThemeGenerator;
+program.parse(process.argv);
