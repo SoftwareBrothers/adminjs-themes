@@ -18,5 +18,5 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true
   },
-  "exclude": ["test", "lib", "dist", "node_modules"]
+  "exclude": ["test", "lib", "dist", "node_modules", "example"]
 }
