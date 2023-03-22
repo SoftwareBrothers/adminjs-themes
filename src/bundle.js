@@ -10,7 +10,7 @@ import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
 
-import { external, globals } from 'adminjs/src/backend/bundler/config';
+import { external, globals } from 'adminjs/bundler';
 
 const readdir = util.promisify(fs.readdir);
 const writeFile = util.promisify(fs.writeFile);
@@ -104,7 +104,7 @@ export async function bundle(input = './src/themes', output = './lib') {
   await writeFile(path.resolve(output, 'index.d.ts'), types);
 }
 
-const compile = async (code: string) =>
+const compile = async code =>
   rollup({
     input: 'entry',
     plugins: [
@@ -119,7 +119,9 @@ const compile = async (code: string) =>
         entry: code,
       }),
       typescript({
-        module: 'esnext',
+        moduleResolution: 'nodenext',
+        module: 'NodeNext',
+        target: 'ESNext',
         jsx: 'react',
         compilerOptions: {
           declarationDir: null,

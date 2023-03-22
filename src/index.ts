@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { program } from 'commander';
-import { bundle } from './bundle';
+import { bundle } from './bundle.js';
 
 program.name('themes').description('AdminJS Themes CLI');
 

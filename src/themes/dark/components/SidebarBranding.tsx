@@ -1,7 +1,7 @@
 import { Box } from '@adminjs/design-system';
 import { ViewHelpers } from 'adminjs';
 import React from 'react';
-import Logo from '../assets/logo';
+import Logo from '../assets/logo.js';
 
 const h = new ViewHelpers()
 

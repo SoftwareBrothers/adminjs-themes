@@ -1,4 +1,4 @@
-import type { ThemeConfig } from 'adminjs';
+import { ThemeConfig } from '../../types/index.js';
 
 const theme: Partial<ThemeConfig['data']> = {
   colors: {
@@ -11,11 +11,11 @@ const theme: Partial<ThemeConfig['data']> = {
     grey100: '#8C8B90',
     grey60: '#8C8B90',
     filterBg: '#1A1A1E',
-    inputBorder: 'rgba(145, 158, 171, 0.32)'
+    inputBorder: 'rgba(145, 158, 171, 0.32)',
   },
   borders: {
     default: '1px solid #232228',
-    input: '1px solid #232228'
+    input: '1px solid #232228',
   },
   shadows: {
     login: '0 15px 24px 0 rgba(0, 0, 0, 0.3)',

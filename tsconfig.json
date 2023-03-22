@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "ESNext",
     "esModuleInterop": true,
     "jsx": "preserve",
     "declaration": true,
@@ -10,13 +10,15 @@
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
     "noImplicitThis": true,
-    "moduleResolution": "node",
-    "module": "commonjs",
+    "moduleResolution": "nodenext",
+    "module": "NodeNext",
     "baseUrl": "./",
     "outDir": "dist",
     "declarationDir": null,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowJs": true
   },
+  "include": ["./src/**/*"],
   "exclude": ["test", "lib", "dist", "node_modules", "example"]
 }

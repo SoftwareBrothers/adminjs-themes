@@ -1,4 +1,4 @@
-import type { ThemeConfig } from 'adminjs';
+import { ThemeConfig } from '../../types/index.js';
 
 const theme: Partial<ThemeConfig['data']> = {};
 

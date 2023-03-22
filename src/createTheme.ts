@@ -1,4 +1,4 @@
-import type { ThemeConfig } from 'adminjs';
+import { ThemeConfig } from './types/index.js';
 
 export const createTheme = (
   data: ThemeConfig['data'],

@@ -1,15 +1,13 @@
-import { ThemeOverride } from '@adminjs/design-system';
+import { ThemeConfig } from '../../types/index.js';
 
-const theme: Partial<ThemeOverride> = {
+const theme: Partial<ThemeConfig['data']> = {
   colors: {
-    bg: '#F8F9FE',
+    bg: '#FFFFFF',
     container: '#FFFFFF',
     defaultText: '#1C1C38',
-    border: '#dedede',
+    border: '#F9F9F9',
     sidebar: '#FFFFFF',
     navbar: '#FFFFFF',
-    loginText: '#000000',
-    loginBg: '#FFFFFF',
   },
 };
 
