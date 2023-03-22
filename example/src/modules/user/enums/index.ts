@@ -1,1 +1,1 @@
-export { default as UserRole } from './user-role.enum';
+export { default as UserRole } from './user-role.enum.js';

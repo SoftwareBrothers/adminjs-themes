@@ -4,7 +4,7 @@ export enum BaseValidationErrors {
 }
 
 export class ValidationError<T = unknown> extends Error {
-  data: T;
+  data?: T;
 
   status: number;
 

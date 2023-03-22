@@ -1,2 +1,2 @@
-export * from './validation-error';
-export * from './authorization-error';
+export * from './validation-error.js';
+export * from './authorization-error.js';

@@ -1,7 +1,7 @@
 import { Column, Entity, Index } from 'typeorm';
 
-import { RootEntity } from '../../../utils/root-entity';
-import { UserRole } from '../enums';
+import { RootEntity } from '../../../utils/root-entity.js';
+import { UserRole } from '../enums/index.js';
 
 export interface IUser {
   email: string;
@@ -14,13 +14,13 @@ export interface IUser {
 class User extends RootEntity implements IUser {
   @Column({ name: 'email', type: 'varchar', length: 128, unique: true })
   @Index()
-  public email: string;
+  public email!: string;
 
   @Column({ name: 'password', type: 'text' })
-  public password: string;
+  public password!: string;
 
   @Column({ name: 'theme', type: 'text', nullable: true })
-  public theme: string;
+  public theme!: string;
 
   @Column({
     name: 'role',
@@ -30,7 +30,7 @@ class User extends RootEntity implements IUser {
     nullable: false,
   })
   @Index()
-  public role: UserRole;
+  public role!: UserRole;
 }
 
 export default User;

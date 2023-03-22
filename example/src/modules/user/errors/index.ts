@@ -1,1 +1,1 @@
-export * from './validation-errors';
+export * from './validation-errors.js';

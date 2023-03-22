@@ -5,7 +5,7 @@ import {
 } from 'class-transformer';
 import { validate } from 'class-validator';
 
-import { BaseValidationErrors, ValidationError } from './errors';
+import { BaseValidationErrors, ValidationError } from './errors/index.js';
 
 export class BaseDto {
   public toJSON() {

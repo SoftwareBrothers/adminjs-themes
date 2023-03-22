@@ -2,8 +2,8 @@ import passwordsFeature from '@adminjs/passwords';
 import { ResourceWithOptions } from 'adminjs';
 import argon from 'argon2';
 
-import { User } from '../entities';
-import { UserRole } from '../enums';
+import { User } from '../entities/index.js';
+import { UserRole } from '../enums/index.js';
 
 type UserProperties = (keyof User)[];
 

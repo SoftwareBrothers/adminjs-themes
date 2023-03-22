@@ -2,12 +2,12 @@ import { Database, Resource } from '@adminjs/typeorm';
 import AdminJS from 'adminjs';
 import { Express } from 'express';
 
-import { UserResource } from '../modules/user';
-import { componentLoader } from './component-loader';
+import { UserResource } from '../modules/user/index.js';
+import { componentLoader } from './component-loader.js';
 
-import { dark, light, wide } from '../../../';
-import config from '../config';
-import getAdminRouter from './router';
+// import { dark, light, wide } from '../../../src/index.js';
+import config from '../config/index.js';
+import getAdminRouter from './router.js';
 
 AdminJS.registerAdapter({ Database, Resource });
 
@@ -16,8 +16,8 @@ const setupAdmin = async (app: Express): Promise<void> => {
     resources: [UserResource],
     componentLoader,
     rootPath: '/',
-    availableThemes: [wide, light, dark],
-    defaultTheme: 'wide',
+    // availableThemes: [wide, light, dark],
+    // defaultTheme: 'wide',
   });
 
   if (config.app.env === 'production') {

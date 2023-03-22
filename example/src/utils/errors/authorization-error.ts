@@ -1,5 +1,5 @@
 export class AuthorizationError<T = unknown> extends Error {
-  public data: T;
+  public data?: T;
 
   public status: number;
 

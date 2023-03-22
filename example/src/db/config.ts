@@ -1,6 +1,7 @@
 import { DataSourceOptions } from 'typeorm';
-import { User } from '../modules/user';
-import '../config';
+
+import { User } from '../modules/user/index.js';
+import '../config/index.js';
 
 const options: DataSourceOptions = {
   type: 'postgres' as const,

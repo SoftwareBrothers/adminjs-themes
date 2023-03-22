@@ -1,9 +1,9 @@
 import AdminJS from 'adminjs';
 import ExpressPlugin from '@adminjs/express';
 
-import config from '../config';
+import config from '../config/index.js';
 
-import { authenticate, sessionStore } from './auth';
+import { authenticate, sessionStore } from './auth.js';
 
 export const getAdminRouter = (admin: AdminJS) => {
   const router = ExpressPlugin.buildAuthenticatedRouter(

@@ -1,10 +1,10 @@
 import argon from 'argon2';
 import PostgresSession from 'connect-pg-simple';
 import session from 'express-session';
-import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions.js';
 
-import databaseConfig from '../db/config';
-import { UserService } from '../modules/user';
+import databaseConfig from '../db/config.js';
+import { UserService } from '../modules/user/index.js';
 
 const PostgresStore = PostgresSession(session);
 

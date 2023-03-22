@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
 
-import dataSource from '../../../db/datasource';
-import { User } from '../entities';
+import dataSource from '../../../db/datasource.js';
+import { User } from '../entities/index.js';
 
 class UserService {
   protected userRepository: Repository<User>;
