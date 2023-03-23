@@ -11,7 +11,7 @@
     "docker:up": "docker-compose -f docker-compose.yml up -d"
   },
   "dependencies": {
-    "@adminjs/design-system": "^4.0.0-beta-v4.1",
+    "@adminjs/design-system": "^4.0.0-beta-v4.2",
     "@adminjs/express": "^6.0.0-beta.2",
     "@adminjs/passwords": "^4.0.0-beta.1",
     "@adminjs/typeorm": "^5.0.0-beta.1",
