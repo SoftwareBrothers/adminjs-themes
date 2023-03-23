@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "esnext",
     "esModuleInterop": true,
     "jsx": "preserve",
     "declaration": true,
@@ -11,7 +11,7 @@
     "strictBindCallApply": true,
     "noImplicitThis": true,
     "moduleResolution": "nodenext",
-    "module": "NodeNext",
+    "module": "nodenext",
     "baseUrl": "./",
     "outDir": "dist",
     "declarationDir": null,
