@@ -42,7 +42,7 @@ export async function bundle(input = './src/themes', output = './lib') {
       const bundleInput = [
         ...files.map(
           ({ component, path }) =>
-            `export { default as ${component} } from '${path}';`
+            `export { default as ${component} } from '${path}'`
         ),
       ].join('\n');
 
@@ -74,32 +74,30 @@ export async function bundle(input = './src/themes', output = './lib') {
   });
 
   const indexInput = [
-    'import { createTheme } from "./src/createTheme.ts";',
-    ...files.map(
-      ({ theme, overrides }) => `import ${theme}Overrides from '${overrides}';`
-    ),
-    ...files.map(
-      ({ theme, details }) => `import ${theme}Details from '${details}';`
-    ),
-    ...files.map(
-      ({ theme }) =>
-        `export const ${theme} = createTheme(${theme}Overrides, '${theme}', ${theme}Details.name, __dirname);`
+    `import { createTheme } from './src/createTheme.ts'`,
+    ...files.map(({ theme, overrides, details }) =>
+      [
+        `import ${theme}Overrides from '${overrides}'`,
+        `import ${theme}Details from '${details}'`,
+        `export const ${theme} = createTheme(${theme}Overrides, '${theme}', ${theme}Details.name)`,
+      ].join('\n')
     ),
   ].join('\n');
 
   const {
     output: [{ code: index }],
   } = await compile(indexInput).then(bundle =>
-    bundle.generate({ format: 'commonjs' })
+    bundle.generate({ format: 'esm' })
   );
 
   await mkdir(output, { recursive: true });
   await writeFile(path.resolve(output, 'index.js'), index);
 
   const types = [
-    'import { ThemeConfig } from "adminjs";',
-    ...files.map(({ theme }) => `declare const ${theme}: ThemeConfig;`),
-    ...files.map(({ theme }) => `export { ${theme} };`),
+    `import type { ThemeConfig } from 'adminjs'`,
+    ...files.map(({ theme }) =>
+      [`declare const ${theme}: ThemeConfig`, `export { ${theme} }`].join('\n')
+    ),
   ].join('\n');
   await writeFile(path.resolve(output, 'index.d.ts'), types);
 }
@@ -120,8 +118,8 @@ const compile = async code =>
       }),
       typescript({
         moduleResolution: 'nodenext',
-        module: 'NodeNext',
-        target: 'ESNext',
+        module: 'nodenext',
+        target: 'esnext',
         jsx: 'react',
         compilerOptions: {
           declarationDir: null,

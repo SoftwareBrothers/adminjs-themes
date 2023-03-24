@@ -50,6 +50,10 @@
   resolved "https://registry.yarnpkg.com/@adminjs/passwords/-/passwords-4.0.0-beta.1.tgz#9d5ee5616b26c3b1b0144056ab45733316f3c70f"
   integrity sha512-Bbc/9lIwJ0SQD7Q5N+g8NIk/As2aeGFr5v1mpBWprYigt1u/KIJWy7LQKc28hd63Mwk7fK8Y35OMcXpVUEFFpA==
 
+"@adminjs/themes@link:../adminjs-themes":
+  version "0.0.0"
+  uid ""
+
 "@adminjs/typeorm@^5.0.0-beta.1":
   version "5.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@adminjs/typeorm/-/typeorm-5.0.0-beta.1.tgz#81970528299a21489615a4d38b7da6318d203271"
