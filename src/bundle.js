@@ -18,7 +18,7 @@ const copyFile = util.promisify(fs.copyFile);
 const mkdir = util.promisify(fs.mkdir);
 const rm = util.promisify(fs.rm);
 
-export async function bundle(input = './src/themes', output = './lib') {
+export async function bundle(input = './src/themes', output = './lib', root = undefined) {
   await rm(output, { recursive: true, force: true });
   const themes = await readdir(input);
 
@@ -79,7 +79,7 @@ export async function bundle(input = './src/themes', output = './lib') {
       [
         `import ${theme}Overrides from '${overrides}'`,
         `import ${theme}Details from '${details}'`,
-        `export const ${theme} = createTheme(${theme}Overrides, '${theme}', ${theme}Details.name)`,
+        `export const ${theme} = createTheme(${theme}Overrides, '${theme}', ${theme}Details.name, ${root})`,
       ].join('\n')
     ),
   ].join('\n');

@@ -9,6 +9,6 @@ export const createTheme = (
   id: theme,
   name,
   data,
-  bundlePath: `${root}/${theme}/theme.bundle.js`,
-  stylePath: `${root}/${theme}/style.css`,
+  bundlePath: root ? `${root}/${theme}/theme.bundle.js` : undefined,
+  stylePath: root ? `${root}/${theme}/style.css` : undefined,
 });
