@@ -14,7 +14,7 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-empty-function": "off"
   },
-  "ignorePatterns": ["node_modules", "dist", "example"],
+  "ignorePatterns": ["node_modules", "dist", "*.css", "example"],
   "settings": {
     "react": {
       "version": "detect"
