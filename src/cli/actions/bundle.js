@@ -14,19 +14,22 @@ import { external, globals } from 'adminjs/bundler';
 
 const readdir = util.promisify(fs.readdir);
 const writeFile = util.promisify(fs.writeFile);
-const copyFile = util.promisify(fs.copyFile);
-const mkdir = util.promisify(fs.mkdir);
 const rm = util.promisify(fs.rm);
 
-export async function bundle(input = './src/themes', output = './lib', root = undefined) {
+export async function bundle(
+  input = './src/themes',
+  output = './src',
+  root = undefined
+) {
   await rm(output, { recursive: true, force: true });
   const themes = await readdir(input);
 
   await Promise.all(
     themes.map(async theme => {
+      if (theme === 'index.ts') return;
       const themeDir = path.resolve(input, theme);
-      const outputThemeDir = path.resolve(output, theme);
-      await mkdir(outputThemeDir, { recursive: true });
+      const outputThemeDir = themeDir;
+      // await mkdir(outputThemeDir, { recursive: true });
       const componentsDir = path.resolve(themeDir, 'components');
       const components = await readdir(componentsDir).catch(() => []);
       const files = components
@@ -57,49 +60,49 @@ export async function bundle(input = './src/themes', output = './lib', root = un
       );
 
       await writeFile(path.resolve(outputThemeDir, 'theme.bundle.js'), bundle);
-      await copyFile(
-        path.resolve(themeDir, 'style.css'),
-        path.resolve(outputThemeDir, `style.css`)
-      );
+      // await copyFile(
+      //   path.resolve(themeDir, 'style.css'),
+      //   path.resolve(outputThemeDir, `style.css`)
+      // );
     })
   );
 
-  const files = themes.map(theme => {
-    const dir = path.resolve(input, theme);
-    return {
-      theme,
-      overrides: path.resolve(dir, 'theme.ts'),
-      details: path.resolve(dir, 'details.json'),
-    };
-  });
+  // const files = themes.map(theme => {
+  //   const dir = path.resolve(input, theme);
+  //   return {
+  //     theme,
+  //     overrides: path.resolve(dir, 'theme.ts'),
+  //     // details: path.resolve(dir, 'details.json'),
+  //   };
+  // });
 
-  const indexInput = [
-    `import { createTheme } from './src/createTheme.ts'`,
-    ...files.map(({ theme, overrides, details }) =>
-      [
-        `import ${theme}Overrides from '${overrides}'`,
-        `import ${theme}Details from '${details}'`,
-        `export const ${theme} = createTheme(${theme}Overrides, '${theme}', ${theme}Details.name, ${root})`,
-      ].join('\n')
-    ),
-  ].join('\n');
+  // const indexInput = [
+  //   `import { createTheme } from './src/createTheme.ts'`,
+  //   ...files.map(({ theme, overrides, details }) =>
+  //     [
+  //       `import ${theme}Overrides from '${overrides}'`,
+  //       `import ${theme}Details from '${details}'`,
+  //       `export const ${theme} = createTheme(${theme}Overrides, '${theme}', ${theme}Details.name, ${root})`,
+  //     ].join('\n')
+  //   ),
+  // ].join('\n');
 
-  const {
-    output: [{ code: index }],
-  } = await compile(indexInput).then(bundle =>
-    bundle.generate({ format: 'esm' })
-  );
+  // const {
+  //   output: [{ code: index }],
+  // } = await compile(indexInput).then(bundle =>
+  //   bundle.generate({ format: 'esm' })
+  // );
 
-  await mkdir(output, { recursive: true });
-  await writeFile(path.resolve(output, 'index.js'), index);
+  // await mkdir(output, { recursive: true });
+  // await writeFile(path.resolve(output, 'index.js'), index);
 
-  const types = [
-    `import type { ThemeConfig } from 'adminjs'`,
-    ...files.map(({ theme }) =>
-      [`declare const ${theme}: ThemeConfig`, `export { ${theme} }`].join('\n')
-    ),
-  ].join('\n');
-  await writeFile(path.resolve(output, 'index.d.ts'), types);
+  // const types = [
+  //   `import type { ThemeConfig } from 'adminjs'`,
+  //   ...files.map(({ theme }) =>
+  //     [`declare const ${theme}: ThemeConfig`, `export { ${theme} }`].join('\n')
+  //   ),
+  // ].join('\n');
+  // await writeFile(path.resolve(output, 'index.d.ts'), types);
 }
 
 const compile = async code =>

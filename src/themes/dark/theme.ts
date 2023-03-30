@@ -1,6 +1,6 @@
 import { ThemeConfig } from '../../types/index.js';
 
-const theme: Partial<ThemeConfig['data']> = {
+export const theme: Partial<ThemeConfig['data']> = {
   colors: {
     primary100: '#256BEE',
     bg: '#151419',
@@ -24,5 +24,3 @@ const theme: Partial<ThemeConfig['data']> = {
     card: '0 1px 6px 0 rgba(0, 0, 0, 0.3)',
   },
 };
-
-export default theme;

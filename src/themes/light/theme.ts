@@ -1,6 +1,6 @@
 import { ThemeConfig } from '../../types/index.js';
 
-const theme: Partial<ThemeConfig['data']> = {
+export const theme: Partial<ThemeConfig['data']> = {
   colors: {
     bg: '#FFFFFF',
     container: '#FFFFFF',
@@ -10,5 +10,3 @@ const theme: Partial<ThemeConfig['data']> = {
     navbar: '#FFFFFF',
   },
 };
-
-export default theme;
