@@ -9,7 +9,6 @@ import { componentLoader } from './component-loader.js';
 import config from '../config/index.js';
 import getAdminRouter from './router.js';
 
-
 AdminJS.registerAdapter({ Database, Resource });
 
 const setupAdmin = async (app: Express): Promise<void> => {
@@ -17,8 +16,19 @@ const setupAdmin = async (app: Express): Promise<void> => {
     resources: [UserResource],
     componentLoader,
     rootPath: '/',
-    availableThemes: [wide, light, dark],
     defaultTheme: 'light',
+    availableThemes: [
+      wide,
+      light,
+      dark,
+      // {
+      //   id: 'theme',
+      //   name: 'Custom theme',
+      //   data: {},
+      //   bundlePath: `themes/theme/theme.bundle.js`,
+      //   stylePath: `themes/theme/style.css`,
+      // },
+    ],
   });
 
   if (config.app.env === 'production') {

@@ -19,40 +19,45 @@ const rm = util.promisify(fs.rm);
 export const bundleTheme = async (
   input = './src/themes',
   output = './src',
-  root = undefined
+  themeId = undefined
 ) => {
   await rm(output, { recursive: true, force: true });
-  const themes = await readdir(input);
 
-  await Promise.all(
-    themes.map(async theme => {
-      if (theme === 'index.ts') return;
-      const themeDir = path.resolve(input, theme);
-      const outputThemeDir = themeDir;
-      const componentsDir = path.resolve(themeDir, 'components');
-      const componentsFiles = await readdir(componentsDir).catch(() => []);
-      const components = componentsFiles
-        .reduce((acc, file) => {
-          const fileExt = path.parse(file).ext;
-          if (['.tsx', '.jsx'].includes(fileExt)) {
-            const filePath = path.resolve(componentsDir, file);
-            const { name: component } = path.parse(filePath);
-            const exportLine = `export { default as ${component} } from '${filePath}'`;
-            acc.push(exportLine);
-          }
-          return acc;
-        }, [])
-        .join('\n');
+  if (themeId) {
+    bundleThemeById(themeId);
+  } else {
+    const themes = (await readdir(input, { withFileTypes: true }))
+      .filter(dirent => !dirent.isFile())
+      .map(dirent => dirent.name);
+    await Promise.all(themes.map(id => bundleThemeById(input, id)));
+  }
+};
 
-      const {
-        output: [{ code: bundle }],
-      } = await compile(components).then(bundle =>
-        bundle.generate({ globals, format: 'iife', name: `THEME_COMPONENTS` })
-      );
+const bundleThemeById = async (input, id) => {
+  const themeDir = path.resolve(input, id);
+  const outputThemeDir = themeDir;
+  const componentsDir = path.resolve(themeDir, 'components');
+  const componentsFiles = await readdir(componentsDir).catch(() => []);
+  const components = componentsFiles
+    .reduce((acc, file) => {
+      const fileExt = path.parse(file).ext;
+      if (['.tsx', '.jsx'].includes(fileExt)) {
+        const filePath = path.resolve(componentsDir, file);
+        const { name: component } = path.parse(filePath);
+        const exportLine = `export { default as ${component} } from '${filePath}'`;
+        acc.push(exportLine);
+      }
+      return acc;
+    }, [])
+    .join('\n');
 
-      await writeFile(path.resolve(outputThemeDir, 'theme.bundle.js'), bundle);
-    })
+  const {
+    output: [{ code: bundle }],
+  } = await compile(components).then(bundle =>
+    bundle.generate({ globals, format: 'iife', name: `THEME_COMPONENTS` })
   );
+
+  await writeFile(path.resolve(outputThemeDir, 'theme.bundle.js'), bundle);
 };
 
 const compile = async code =>

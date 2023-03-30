@@ -1,7 +1,7 @@
 {
   "verbose": false,
   "ignore": ["*.test.*", "*.spec.*"],
-  "exec": "node --loader ts-node/esm --trace-warnings src/server.ts",
-  "watch": ["src", "../src"],
+  "exec": "node --loader ts-node/esm src/server.ts",
+  "watch": ["src"],
   "ext": "ts"
 }

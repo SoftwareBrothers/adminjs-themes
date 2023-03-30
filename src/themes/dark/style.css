@@ -3,5 +3,21 @@
 }
 
 body {
-  background: #000;
+  background: #0c0b10;
+}
+
+[data-css='default-dashboard'] {
+  background-color: #0c0b10;
+}
+
+[data-css='default-dashboard'] section:last-of-type {
+  background-color: transparent;
+}
+
+[data-css='default-dashboard'] + section svg [fill='#0C1E29'] {
+  fill: rgba(255, 255, 255, 1);
+}
+
+[data-css='default-dashboard'] + section svg [stroke='#3B3552'] {
+  stroke: rgba(255, 255, 255, 0.8);
 }

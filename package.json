@@ -7,9 +7,9 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib/index.js"
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
     }
   },
   "bin": {
@@ -19,7 +19,7 @@
     "release": "semantic-release",
     "prebuild": "rimraf dist types && yarn types",
     "types": "tsc",
-    "build": "babel src --out-dir lib --copy-files --extensions '.ts,.js,.jsx,.tsx'",
+    "build": "babel src --out-dir dist --copy-files --extensions '.ts,.js,.jsx,.tsx'",
     "postbuild": "yarn cli bundle ./src/themes",
     "cli": "node --loader ts-node/esm ./src/cli/index.ts",
     "register:cli": "yarn global add \"link:$PWD\"",
@@ -56,6 +56,7 @@
     "commander": "^10.0.0",
     "eslint": "^8.36.0",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
