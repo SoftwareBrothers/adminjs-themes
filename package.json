@@ -17,9 +17,10 @@
   },
   "scripts": {
     "release": "semantic-release",
-    "prebuild": "rimraf dist",
-    "build": "tsc --project tsconfig.build.json",
-    "postbuild": "node dist/index.js bundle ./src/themes",
+    "prebuild": "rimraf dist types && yarn types",
+    "types": "tsc",
+    "build": "babel src --out-dir lib --copy-files --extensions '.ts,.js,.jsx,.tsx'",
+    "postbuild": "yarn cli bundle ./src/themes",
     "cli": "node --loader ts-node/esm ./src/cli/index.ts",
     "register:cli": "yarn global add \"link:$PWD\"",
     "lint": "eslint './src/**/*'",
@@ -36,8 +37,11 @@
     "@adminjs/design-system": "^4.0.0-beta-v4.5"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.0",
     "@commitlint/cli": "^17.5.0",
     "@commitlint/config-conventional": "^17.4.4",
+    "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
