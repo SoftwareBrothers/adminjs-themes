@@ -20,13 +20,14 @@
     "prebuild": "rimraf dist",
     "build": "tsc --project tsconfig.build.json",
     "postbuild": "node dist/index.js bundle ./src/themes",
-    "cli": "ts-node ./src/cli/build.ts",
+    "cli": "node --loader ts-node/esm ./src/cli/index.ts",
+    "register:cli": "yarn global add \"link:$PWD\"",
     "lint": "eslint './src/**/*'",
     "lint:fix": "eslint --fix",
     "style": "prettier --check src",
     "format": "prettier --write src --config ./.prettierrc",
-    "check:all": "yarn lint && yarn style && yarn build && yarn test",
-    "generate": "node --loader ts-node/esm ./src/cli/generate.ts generate"
+    "test": "echo \"Error: no test specified\"",
+    "check:all": "yarn lint && yarn style && yarn build && yarn test"
   },
   "peerDependencies": {
     "adminjs": "^7.0.0-beta-v7.2"
