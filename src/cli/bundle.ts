@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { createCommand } from 'commander';
-import { bundle as bundleAction } from './actions/bundle.js';
+import { bundleTheme } from './actions/bundleTheme.js';
 
 export const bundle = createCommand('bundle')
   .description('Themes bundler')
@@ -9,7 +9,7 @@ export const bundle = createCommand('bundle')
   .option('--root <directory>', 'Root directory', undefined)
   .action(async (path, options) => {
     try {
-      await bundleAction(path, options.output, options.root);
+      await bundleTheme(path, options.output, options.root);
     } catch (e) {
       console.error(e);
       process.exit(1);

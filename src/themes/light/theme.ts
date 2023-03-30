@@ -1,4 +1,4 @@
-import { ThemeConfig } from '../../types/index.js';
+import type { ThemeConfig } from 'adminjs';
 
 export const theme: Partial<ThemeConfig['data']> = {
   colors: {

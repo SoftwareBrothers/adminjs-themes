@@ -15,7 +15,19 @@ export const generateTheme = async (
   const themeDir = path.resolve(output, themeId);
   const componentsDir = path.resolve(themeDir, 'components');
 
+  await mkdir(componentsDir, { recursive: true });
   await mkdir(themeDir, { recursive: true });
+
+  await writeFile(
+    path.resolve(themeDir, 'theme.ts'),
+    [
+      `import { ThemeConfig } from '../../types/index.js'`,
+      ``,
+      `export const theme: Partial<ThemeConfig['data']> = {};`,
+    ].join('\n')
+  );
+
+  await writeFile(path.resolve(themeDir, 'style.css'), '');
 
   await writeFile(
     path.resolve(themeDir, 'index.ts'),
@@ -30,17 +42,4 @@ export const generateTheme = async (
       `};`,
     ].join('\n')
   );
-
-  await writeFile(
-    path.resolve(themeDir, 'theme.ts'),
-    [
-      `import { ThemeConfig } from '../../types/index.js'`,
-      ``,
-      `export const theme: Partial<ThemeConfig['data']> = {};`,
-    ].join('\n')
-  );
-
-  await writeFile(path.resolve(themeDir, 'style.css'), '');
-
-  await mkdir(componentsDir, { recursive: true });
 };
