@@ -35,7 +35,7 @@ export const generateTheme = async (
   await writeFile(
     path.resolve(themeDir, 'theme.ts'),
     [
-      `import { ThemeConfig } from '../../types/index.js'`,
+      `import type { ThemeConfig } from 'adminjs'`,
       ``,
       `export const theme: Partial<ThemeConfig['data']> = {};`,
     ].join('\n')
@@ -46,7 +46,7 @@ export const generateTheme = async (
   await writeFile(
     path.resolve(themeDir, 'index.ts'),
     [
-      `import { ThemeConfig } from '../../types/index.js';`,
+      `import type { ThemeConfig } from 'adminjs';`,
       `import { theme } from './theme.js';`,
       ``,
       `export const themeConfig: ThemeConfig = {`,
