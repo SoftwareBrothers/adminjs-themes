@@ -14,28 +14,38 @@ import { external, globals } from 'adminjs/bundler';
 
 const readdir = util.promisify(fs.readdir);
 const writeFile = util.promisify(fs.writeFile);
-const rm = util.promisify(fs.rm);
 
+/**
+  Bundle the components of a theme or all themes in a directory and write the output to a file.
+  @async
+  @param {string} [input='./src/themes'] - The directory containing the themes.
+  @param {string} [themeId] - The ID of the theme to bundle. If not provided, all themes in the input directory will be bundled.
+  @returns {Promise<void>} - A Promise that resolves when all themes have been bundled and written to files.
+*/
 export const bundleTheme = async (
   input = './src/themes',
-  output = './src',
   themeId = undefined
 ) => {
-  await rm(output, { recursive: true, force: true });
-
   if (themeId) {
-    bundleThemeById(themeId);
+    await bundleComponents(input, themeId);
   } else {
     const themes = (await readdir(input, { withFileTypes: true }))
       .filter(dirent => !dirent.isFile())
-      .map(dirent => dirent.name);
-    await Promise.all(themes.map(id => bundleThemeById(input, id)));
+      .map(dirent => bundleComponents(input, dirent.name));
+    await Promise.all(themes);
   }
+  console.log(`Bundling completed`);
 };
 
-const bundleThemeById = async (input, id) => {
+/**
+  Bundle components of a theme into a single JS file and write it to the theme's directory.
+  @async
+  @param {string} input - The base directory for the theme.
+  @param {string} id - The ID of the theme.
+  @returns {Promise<void>} - A Promise that resolves when the components are bundled and written to a file.
+*/
+const bundleComponents = async (input, id) => {
   const themeDir = path.resolve(input, id);
-  const outputThemeDir = themeDir;
   const componentsDir = path.resolve(themeDir, 'components');
   const componentsFiles = await readdir(componentsDir).catch(() => []);
   const components = componentsFiles
@@ -51,13 +61,15 @@ const bundleThemeById = async (input, id) => {
     }, [])
     .join('\n');
 
+  console.log(`⚙️ Bundling components for ${id} theme ...`);
   const {
     output: [{ code: bundle }],
   } = await compile(components).then(bundle =>
     bundle.generate({ globals, format: 'iife', name: `THEME_COMPONENTS` })
   );
 
-  await writeFile(path.resolve(outputThemeDir, 'theme.bundle.js'), bundle);
+  await writeFile(path.resolve(themeDir, 'theme.bundle.js'), bundle);
+  console.log(`✔️ Generated components bundle for ${id}`);
 };
 
 const compile = async code =>
