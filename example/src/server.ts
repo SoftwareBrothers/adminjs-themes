@@ -7,15 +7,15 @@ import 'reflect-metadata';
 
 import setupAdmin from './admin/index.js';
 import datasource from './db/datasource.js';
-import config from './config/index.js';
+import { app as appConfig } from './config/index.js';
 
 await datasource.initialize();
 const app = express();
 await setupAdmin(app);
 
 app.use(cors({ origin: '*' }));
-app.listen(config.app.port, () => {
+app.listen(appConfig.port, () => {
   console.log(
-    `Example app listening on port http://localhost:${config.app.port}`
+    `Example app listening on port http://localhost:${appConfig.port}`
   );
 });

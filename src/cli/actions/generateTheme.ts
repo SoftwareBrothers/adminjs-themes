@@ -37,7 +37,7 @@ export const generateTheme = async (
     [
       `import type { ThemeConfig } from 'adminjs'`,
       ``,
-      `export const theme: Partial<ThemeConfig['data']> = {};`,
+      `export const overrides: ThemeConfig['overrides'] = {};`,
     ].join('\n')
   );
 
@@ -47,12 +47,12 @@ export const generateTheme = async (
     path.resolve(themeDir, 'index.ts'),
     [
       `import type { ThemeConfig } from 'adminjs';`,
-      `import { theme } from './theme.js';`,
+      `import { overrides } from './overrides.js';`,
       ``,
       `export const themeConfig: ThemeConfig = {`,
       `  id: '${themeId}',`,
       `  name: '${description || name}',`,
-      `  data: theme,`,
+      `  overrides,`,
       `};`,
     ].join('\n')
   );

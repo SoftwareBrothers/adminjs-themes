@@ -1,6 +1,6 @@
 import type { ThemeConfig } from 'adminjs';
 
-export const theme: Partial<ThemeConfig['data']> = {
+export const overrides: ThemeConfig['overrides'] = {
   colors: {
     primary100: '#256BEE',
     bg: '#151419',

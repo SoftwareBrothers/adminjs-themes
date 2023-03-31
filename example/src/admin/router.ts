@@ -1,23 +1,22 @@
-import AdminJS from 'adminjs';
 import ExpressPlugin from '@adminjs/express';
+import AdminJS from 'adminjs';
 
-import config from '../config/index.js';
-
+import { session } from '../config/index.js';
 import { authenticate, sessionStore } from './auth.js';
 
 export const getAdminRouter = (admin: AdminJS) => {
   const router = ExpressPlugin.buildAuthenticatedRouter(
     admin,
     {
-      cookiePassword: config.session.secret as string,
+      cookiePassword: session.secret as string,
       cookieName: 'adminjs',
       authenticate,
     },
     null,
     {
-      secret: config.session.secret,
-      saveUninitialized: config.session.saveUninitialized,
-      resave: config.session.resave,
+      secret: session.secret,
+      saveUninitialized: session.saveUninitialized,
+      resave: session.resave,
       store: sessionStore,
     }
   );

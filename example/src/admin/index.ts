@@ -1,37 +1,40 @@
+import { dark, wide } from '@adminjs/themes';
 import { Database, Resource } from '@adminjs/typeorm';
-import AdminJS from 'adminjs';
+import AdminJS, { ThemeConfig } from 'adminjs';
 import { Express } from 'express';
-import { dark, light, wide } from '@adminjs/themes';
+import path from 'path';
+import * as url from 'url';
 
+import { app as appConfig } from '../config/index.js';
 import { UserResource } from '../modules/user/index.js';
+import { themeConfig } from '../themes/my-custom-theme/index.js';
 import { componentLoader } from './component-loader.js';
-
-import config from '../config/index.js';
-import getAdminRouter from './router.js';
+import { getAdminRouter } from './router.js';
 
 AdminJS.registerAdapter({ Database, Resource });
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const getThemeDir = (theme: string) =>
+  path.join(__dirname, `../themes/${theme}`);
 
 const setupAdmin = async (app: Express): Promise<void> => {
   const admin = new AdminJS({
     resources: [UserResource],
     componentLoader,
     rootPath: '/',
-    defaultTheme: 'light',
+    defaultTheme: themeConfig.id,
     availableThemes: [
       wide,
-      light,
       dark,
-      // {
-      //   id: 'theme',
-      //   name: 'Custom theme',
-      //   data: {},
-      //   bundlePath: `themes/theme/theme.bundle.js`,
-      //   stylePath: `themes/theme/style.css`,
-      // },
+      {
+        ...themeConfig,
+        bundlePath: `${getThemeDir(themeConfig.id)}/theme.bundle.js`,
+        stylePath: `${getThemeDir(themeConfig.id)}/style.css`,
+      } as ThemeConfig,
     ],
   });
 
-  if (config.app.env === 'production') {
+  if (appConfig.env === 'production') {
     admin.initialize();
   } else {
     admin.watch();
