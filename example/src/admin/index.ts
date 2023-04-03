@@ -22,6 +22,13 @@ const setupAdmin = async (app: Express): Promise<void> => {
     resources: [UserResource],
     componentLoader,
     rootPath: '/',
+    branding: {
+      theme: {
+        colors: {
+          primary100: '#26A69A',
+        },
+      },
+    },
     defaultTheme: themeConfig.id,
     availableThemes: [
       wide,
