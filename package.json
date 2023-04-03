@@ -32,15 +32,15 @@
     "check:all": "yarn lint && yarn style && yarn build && yarn test"
   },
   "peerDependencies": {
-    "adminjs": "^7.0.0-beta-v7.3"
+    "adminjs": "^7.0.0-beta-v7.4"
   },
   "dependencies": {
     "@adminjs/design-system": "^4.0.0-beta-v4.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
-    "@babel/core": "^7.21.4",
-    "@babel/preset-env": "^7.21.4",
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.21.0",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.21.0",
     "@commitlint/cli": "^17.5.0",
