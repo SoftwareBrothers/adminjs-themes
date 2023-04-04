@@ -1,4 +1,4 @@
-import { dark, wide } from '@adminjs/themes';
+import { dark, noSidebar } from '@adminjs/themes';
 import { Database, Resource } from '@adminjs/typeorm';
 import AdminJS, { ThemeConfig } from 'adminjs';
 import { Express } from 'express';
@@ -31,7 +31,7 @@ const setupAdmin = async (app: Express): Promise<void> => {
     },
     defaultTheme: themeConfig.id,
     availableThemes: [
-      wide,
+      noSidebar,
       dark,
       {
         ...themeConfig,

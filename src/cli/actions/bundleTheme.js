@@ -50,7 +50,7 @@ export const bundleTheme = async (
 const bundleComponents = async (input, id) => {
   const themeDir = path.resolve(input, id);
 
-  if (fs.existsSync(themeDir)) {
+  if (!fs.existsSync(themeDir)) {
     console.error(`⚠️ Theme ${id} doesn't exists`);
     process.exit(1);
   }
