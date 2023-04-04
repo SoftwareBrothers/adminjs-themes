@@ -14,7 +14,7 @@
     "@adminjs/design-system": "^4.0.0-beta-v4.7",
     "@adminjs/express": "^6.0.0-beta.3",
     "@adminjs/passwords": "^4.0.0-beta.1",
-    "@adminjs/themes": "*",
+    "@adminjs/themes": "^1.0.0-beta.1",
     "@adminjs/typeorm": "^5.0.0-beta.1",
     "adminjs": "^7.0.0-beta-v7.4",
     "argon2": "^0.30.3",
