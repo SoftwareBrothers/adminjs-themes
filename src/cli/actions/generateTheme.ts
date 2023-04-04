@@ -33,7 +33,7 @@ export const generateTheme = async (
   await mkdir(themeDir, { recursive: true });
 
   await writeFile(
-    path.resolve(themeDir, 'theme.ts'),
+    path.resolve(themeDir, 'overrides.ts'),
     [
       `import type { ThemeConfig } from 'adminjs'`,
       ``,
