@@ -32,10 +32,10 @@
     "check:all": "yarn lint && yarn style && yarn build && yarn test"
   },
   "peerDependencies": {
-    "adminjs": "^7.0.0-beta-v7.4"
+    "adminjs": "^7.0.0-beta-v7.5"
   },
   "dependencies": {
-    "@adminjs/design-system": "^4.0.0-beta-v4.7"
+    "@adminjs/design-system": "^4.0.0-beta-v4.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
@@ -56,7 +56,7 @@
     "@semantic-release/git": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
-    "adminjs": "^7.0.0-beta-v7.4",
+    "adminjs": "^7.0.0-beta-v7.5",
     "commander": "^10.0.0",
     "eslint": "^8.36.0",
     "eslint-plugin-import": "^2.27.5",
