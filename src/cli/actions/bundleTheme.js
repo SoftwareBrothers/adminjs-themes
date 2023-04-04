@@ -1,16 +1,18 @@
-import fs from 'fs';
-import util from 'util';
-import path from 'path';
-import { rollup } from 'rollup';
-import typescript from '@rollup/plugin-typescript';
-import virtual from '@rollup/plugin-virtual';
+import babel from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
-import babel from '@rollup/plugin-babel';
+import typescript from '@rollup/plugin-typescript';
+import virtual from '@rollup/plugin-virtual';
+
 import { external, globals } from 'adminjs/bundler';
+import fs from 'fs';
+import kebabCase from 'lodash/kebabCase.js';
+import path from 'path';
+import { rollup } from 'rollup';
+import util from 'util';
 
 const readdir = util.promisify(fs.readdir);
 const writeFile = util.promisify(fs.writeFile);
@@ -27,7 +29,8 @@ export const bundleTheme = async (
   themeId = undefined
 ) => {
   if (themeId) {
-    await bundleComponents(input, themeId);
+    const id = themeId.includes(' ') ? kebabCase(themeId) : themeId;
+    await bundleComponents(input, id);
   } else {
     const themes = (await readdir(input, { withFileTypes: true }))
       .filter(dirent => !dirent.isFile())
@@ -46,6 +49,12 @@ export const bundleTheme = async (
 */
 const bundleComponents = async (input, id) => {
   const themeDir = path.resolve(input, id);
+
+  if (fs.existsSync(themeDir)) {
+    console.error(`⚠️ Theme ${id} doesn't exists`);
+    process.exit(1);
+  }
+
   const componentsDir = path.resolve(themeDir, 'components');
   const componentsFiles = await readdir(componentsDir).catch(() => []);
   const components = componentsFiles

@@ -1,7 +1,7 @@
 import fs from 'fs';
-import util from 'util';
-import path from 'path';
 import kebabCase from 'lodash/kebabCase.js';
+import path from 'path';
+import util from 'util';
 
 const mkdir = util.promisify(fs.mkdir);
 const writeFile = util.promisify(fs.writeFile);
