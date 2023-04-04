@@ -17,7 +17,7 @@ const writeFile = util.promisify(fs.writeFile);
 */
 export const generateTheme = async (
   name: string,
-  description,
+  description: string,
   output = './src/themes'
 ) => {
   const themeId = kebabCase(name);

@@ -5,6 +5,7 @@
     "jsx": "preserve",
     "declaration": true,
     "declarationDir": "./types",
+    "strict": true,
     "importHelpers": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,

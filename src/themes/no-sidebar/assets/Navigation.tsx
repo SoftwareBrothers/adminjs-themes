@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   DropDown,
   DropDownItem,
@@ -8,47 +9,57 @@ import {
   NavigationElementWithChildrenProps,
 } from '@adminjs/design-system';
 import { ReduxState, useNavigationResources } from 'adminjs';
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 
 const NavigationComponent: FC = () => {
   const resources = useSelector((state: ReduxState) => state.resources);
+  const { pathname } = useLocation();
   const navigatonElements = useNavigationResources(resources);
 
-  console.log(navigatonElements);
+  const isSelected = useCallback(
+    ({ href, elements }: NavigationElementWithChildrenProps) =>
+      href ? href === pathname : elements?.map(e => e.href).includes(pathname),
+    [pathname]
+  );
 
   return (
-    <>
+    <Box as="nav" flex alignItems="center">
       {navigatonElements.map(element => (
         <DropDown key={element.label}>
           <DropDownTrigger>
-            <Button color="text">
+            <Button color={isSelected(element) ? 'primary' : 'text'}>
               <Icon icon={element.icon} />
               {element.label}
             </Button>
           </DropDownTrigger>
           <DropDownMenu>
-            <NavigationElement key={element.href} element={element} />
+            {element.elements?.map(nested => (
+              <NavigationElement key={nested.href} element={nested} />
+            ))}
           </DropDownMenu>
         </DropDown>
       ))}
-    </>
+    </Box>
   );
 };
 
-const NavigationElement: FC<{
-  element: NavigationElementWithChildrenProps;
-}> = ({ element }) => (
-  <DropDownItem>
-    <Icon icon={element.icon} />
-    {element.label}
-    {element.elements && (
+type NavigationElementProps = { element: NavigationElementWithChildrenProps };
+
+const NavigationElement: FC<NavigationElementProps> = ({
+  element: { href, label, icon, elements },
+}) => (
+  <DropDownItem as="a" href={href}>
+    {icon && <Icon icon={icon} />}
+    {label}
+    {elements?.length ? (
       <DropDownMenu>
-        {element.elements.map(nested => (
+        {elements.map(nested => (
           <NavigationElement key={nested.href} element={nested} />
         ))}
       </DropDownMenu>
-    )}
+    ) : null}
   </DropDownItem>
 );
 
