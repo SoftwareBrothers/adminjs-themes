@@ -13,16 +13,15 @@ import {
 } from 'adminjs';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Navigation } from '../assets/Navigation.jsx';
 
 const h = new ViewHelpers();
 
 const TopBar: React.FC = () => {
-  const resources = useSelector((state: ReduxState) => state.resources);
   const session = useSelector((state: ReduxState) => state.session);
   const branding = useSelector((state: ReduxState) => state.branding);
   const { logo, companyName } = branding;
 
-  const elements = useNavigationResources(resources);
   const { tb } = useTranslation();
 
   const dropActions: CurrentUserNavProps['dropActions'] = [
@@ -40,12 +39,7 @@ const TopBar: React.FC = () => {
       <Box as="a" href={h.dashboardUrl()} mx="xl">
         {logo ? <img src={logo} alt={companyName} /> : <h1>{companyName}</h1>}
       </Box>
-      {elements.map(element => (
-        <Button as="a" href={element.href} color="text" key={element.href}>
-          <Icon icon={element.icon} />
-          {element.label}
-        </Button>
-      ))}
+      <Navigation />
       <Box as="div" flex flexGrow={1} />
       {session && (
         <CurrentUserNav
