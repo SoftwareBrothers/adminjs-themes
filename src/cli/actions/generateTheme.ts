@@ -35,9 +35,10 @@ export const generateTheme = async (
   await writeFile(
     path.resolve(themeDir, 'overrides.ts'),
     [
-      `import type { ThemeConfig } from 'adminjs'`,
+      `import type { ThemeConfig } from 'adminjs';`,
       ``,
       `export const overrides: ThemeConfig['overrides'] = {};`,
+      ``,
     ].join('\n')
   );
 
@@ -54,6 +55,7 @@ export const generateTheme = async (
       `  name: '${description || name}',`,
       `  overrides,`,
       `};`,
+      ``,
     ].join('\n')
   );
 
