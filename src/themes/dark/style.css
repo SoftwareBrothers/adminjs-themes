@@ -1,3 +1,55 @@
+:root {
+  color-scheme: dark;
+}
+
 body {
-  background: #000;
+  background: #0c0b10;
+}
+
+[data-css='default-dashboard'] {
+  background-color: #0c0b10;
+}
+
+[data-css='default-dashboard'] section:last-of-type {
+  background-color: transparent;
+}
+
+[data-css='default-dashboard'] + section svg [fill='#0C1E29'] {
+  fill: rgba(255, 255, 255, 1);
+}
+
+[data-css='default-dashboard'] + section svg [stroke='#3B3552'] {
+  stroke: rgba(255, 255, 255, 0.8);
+}
+
+.adminjs_PhoneInput .form-control,
+.adminjs_PhoneInput .flag-dropdown {
+  background-color: transparent !important;
+  border-color: rgba(116, 133, 149, 0.32) !important;
+}
+
+.adminjs_PhoneInput .flag-dropdown {
+  background-color: transparent !important;
+}
+
+.adminjs_PhoneInput .selected-flag:hover,
+.adminjs_PhoneInput
+  .selected-flag:focus
+  .adminjs_PhoneInput
+  .flag-dropdown.open,
+.adminjs_PhoneInput .selected-flag.open {
+  background-color: rgba(116, 133, 149, 0.32) !important;
+}
+
+.adminjs_PhoneInput .country-list {
+  background-color: rgb(21, 20, 25) !important;
+}
+
+.adminjs_PhoneInput .country-list .country:hover,
+.adminjs_PhoneInput .country-list .country.highlight {
+  background-color: rgba(116, 133, 149, 0.52) !important;
+}
+
+.adminjs_DatePicker .react-datepicker-wrapper {
+  border-color: rgba(145, 158, 171, 0.32) !important;
 }

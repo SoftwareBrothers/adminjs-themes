@@ -1,22 +1,26 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "esnext",
     "esModuleInterop": true,
     "jsx": "preserve",
     "declaration": true,
+    "declarationDir": "./types",
+    "emitDeclarationOnly": true,
     "importHelpers": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
     "noImplicitThis": true,
-    "moduleResolution": "node",
-    "module": "commonjs",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
     "baseUrl": "./",
     "outDir": "dist",
-    "declarationDir": null,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowJs": true,
+    "resolveJsonModule": true
   },
-  "exclude": ["test", "lib", "dist", "node_modules"]
+  "include": ["./src/**/*"],
+  "exclude": ["test", "lib", "dist", "node_modules", "example"]
 }

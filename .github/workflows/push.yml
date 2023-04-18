@@ -7,8 +7,8 @@ env:
   NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 jobs:
-  test:
-    name: test
+  test-and-publish:
+    name: Test and Publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,7 +16,7 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: '18.x'
       - uses: actions/cache@v1
         id: yarn-cache
         with:
@@ -31,31 +31,8 @@ jobs:
         run: yarn lint
       - name: Build
         run: yarn build
-      - name: Test
-        run: yarn test
-  publish:
-    name: Publish
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - uses: actions/cache@v1
-        id: yarn-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules-
-      - name: Install
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install
-      - name: Build
-        run: yarn build
+      - name: Types
+        run: yarn types
       - name: Release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

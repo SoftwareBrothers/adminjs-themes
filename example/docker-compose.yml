@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  adminjs_themes:
+    container_name: adminjs-themes
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=adminjs
+      - POSTGRES_USER=adminjs
+      - POSTGRES_PASSWORD=adminjs
+    ports:
+      - '5432:5432'
+    volumes:
+      - adminjs_themes_db:/var/lib/postgresql/data
+
+volumes:
+  adminjs_themes_db:
