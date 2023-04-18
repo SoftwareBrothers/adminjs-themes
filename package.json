@@ -32,7 +32,7 @@
     "check:all": "yarn lint && yarn style && yarn build && yarn test"
   },
   "peerDependencies": {
-    "adminjs": "^7.0.0-beta-v7.5"
+    "adminjs": "^7.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.5.0",
@@ -41,16 +41,16 @@
     "@types/lodash": "^4.14.192",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
-    "adminjs": "^7.0.0-beta-v7.5",
+    "adminjs": "^7.0.0",
+    "eslint": "^8.36.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
-    "eslint": "^8.36.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.7",
-    "semantic-release-slack-bot": "^4.0.0",
-    "semantic-release": "^21.0.0"
+    "semantic-release": "^21.0.0",
+    "semantic-release-slack-bot": "^4.0.0"
   },
   "dependencies": {
     "@babel/cli": "^7.21.0",
